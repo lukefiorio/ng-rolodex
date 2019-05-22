@@ -47,18 +47,15 @@ router
 
 router.route('/search/:term').get((req, res) => {
   // all contacts associated with userId
-  console.log(req.params.term);
-  // use qb to filter on search term
   new User({ id: req.query.user })
-    .query((qb) => {
-      qb.orderBy('id', 'ASC');
-    })
     .fetch({ withRelated: ['contacts'] })
     .then((result) => {
-      // send back associated contacts
-      const user = result.toJSON();
-      console.log(user.contacts);
-      return res.send(user.contacts);
+      const userContacts = result.toJSON().contacts;
+      // filter contacts whose name starts with search str
+      const foundContacts = userContacts.filter((contact) => {
+        return contact.name.toLowerCase().startsWith(req.params.term.toLowerCase());
+      });
+      return res.send(foundContacts);
     })
     .catch((err) => {
       console.log('error:', err);
