@@ -2,6 +2,7 @@
 
 const bookshelf = require('../bookshelf');
 
+require('./User');
 class Contact extends bookshelf.Model {
   get tableName() {
     return 'contacts';

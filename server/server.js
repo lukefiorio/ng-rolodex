@@ -16,10 +16,12 @@ const bcrypt = require('bcryptjs');
 
 // source data
 const users = require('./routes/users.js');
+const profile = require('./routes/profile.js');
 const contacts = require('./routes/contacts.js');
 const login = require('./routes/login.js');
 const logout = require('./routes/logout.js');
 const register = require('./routes/register.js');
+const User = require('./database/models/User');
 
 const app = express();
 
@@ -43,6 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/users', users);
+app.use('/api/profile', profile);
 app.use('/api/contacts', contacts);
 app.use('/api/login', login);
 app.use('/api/logout', logout);
