@@ -1,3 +1,17 @@
-<p>
-  home works!
-</p>
+<div class="page">
+  <form>
+    <div>
+      <label for="name">Name:</label>
+    </div>
+    <div>
+      <input type="text" name="name" [(ngModel)]="searchName.name" />
+    </div>
+
+    <div>
+      <button (click)="submit()">Submit</button>
+    </div>
+  </form>
+  <div>
+    {{ foundNames }}
+  </div>
+</div>

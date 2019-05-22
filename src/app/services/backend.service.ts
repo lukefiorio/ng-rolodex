@@ -14,4 +14,27 @@ export class BackendService {
   getProfile(): Promise<object> {
     return this.http.get('/api/profile?user=1').toPromise();
   }
+
+  addContact(
+    id: number,
+    name: string,
+    address: string,
+    mobile: string,
+    work: string,
+    home: string,
+    email: string,
+    twitter: string,
+    instagram: string,
+    github: string,
+    created_by: number,
+  ): Promise<object> {
+    const newContact = { id, name, address, mobile, work, home, email, twitter, instagram, github, created_by };
+    // arg1: route, arg2: body, arg3: header
+    return this.http.post('/api/contacts?user=1', newContact).toPromise();
+  }
+
+  searchContacts(name: string): Promise<object> {
+    // const searchName = { name };
+    return this.http.get(`/api/contacts/search/${name}?user=1`).toPromise();
+  }
 }

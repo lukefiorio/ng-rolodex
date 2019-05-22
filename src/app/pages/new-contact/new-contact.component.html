@@ -2,17 +2,66 @@
   <div>
     <form>
       <div>
-        <label for="title">Title:</label>
+        <label for="name">Name:</label>
       </div>
       <div>
-        <!-- <input type="text" name="title" [(ngModel)]="newMovieData.title" /> -->
+        <input type="text" name="name" [(ngModel)]="newContactData.name" />
       </div>
 
       <div>
-        <label for="year">Year:</label>
+        <label for="address">Address:</label>
       </div>
       <div>
-        <!-- <input type="number" name="year" min="0" [(ngModel)]="newMovieData.year" /> -->
+        <input type="text" name="address" [(ngModel)]="newContactData.address" />
+      </div>
+
+      <div>
+        <label for="mobile">Mobile:</label>
+      </div>
+      <div>
+        <input type="text" name="mobile" [(ngModel)]="newContactData.mobile" />
+      </div>
+
+      <div>
+        <label for="work">Work:</label>
+      </div>
+      <div>
+        <input type="text" name="work" [(ngModel)]="newContactData.work" />
+      </div>
+
+      <div>
+        <label for="home">Home:</label>
+      </div>
+      <div>
+        <input type="text" name="home" [(ngModel)]="newContactData.home" />
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+      </div>
+      <div>
+        <input type="text" name="email" [(ngModel)]="newContactData.email" />
+      </div>
+
+      <div>
+        <label for="twitter">Twitter:</label>
+      </div>
+      <div>
+        <input type="text" name="twitter" [(ngModel)]="newContactData.twitter" />
+      </div>
+
+      <div>
+        <label for="instagram">Instagram:</label>
+      </div>
+      <div>
+        <input type="text" name="instagram" [(ngModel)]="newContactData.instagram" />
+      </div>
+
+      <div>
+        <label for="github">Github:</label>
+      </div>
+      <div>
+        <input type="text" name="github" [(ngModel)]="newContactData.github" />
       </div>
 
       <button (click)="submit()">Submit</button>
