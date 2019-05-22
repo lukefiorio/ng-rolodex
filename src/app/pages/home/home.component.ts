@@ -22,11 +22,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    console.log(this.searchName);
     const { name } = this.searchName;
 
-    this.backend.searchContacts(name).then((data: { name: string }[]) => {
-      this.foundNames = data;
-    });
+    if (name === '') {
+      this.foundNames = [];
+    } else {
+      this.backend.searchContacts(name).then((data: { name: string }[]) => {
+        this.foundNames = data;
+      });
+    }
   }
 }

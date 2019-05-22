@@ -4,11 +4,11 @@
       <label for="name">Name:</label>
     </div>
     <div>
-      <input type="text" name="name" [(ngModel)]="searchName.name" />
+      <input type="text" name="name" [(ngModel)]="searchName.name" (keyup)="submit()" />
     </div>
 
     <div>
-      <button (click)="submit()">Submit</button>
+      <!-- <button (click)="submit()">Submit</button> -->
     </div>
   </form>
   <div>
