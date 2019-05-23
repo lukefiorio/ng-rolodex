@@ -45,4 +45,16 @@ export class BackendService {
   deleteContact(id: string): Promise<object> {
     return this.http.delete(`api/contacts/${id}`).toPromise();
   }
+
+  register(data) {
+    return this.http.post('/api/register', data).toPromise();
+  }
+
+  login(loginData: { username: string; password: string }): Promise<object> {
+    return this.http.post('/api/login', loginData).toPromise();
+  }
+
+  logout() {
+    return this.http.get('/api/logout').toPromise();
+  }
 }

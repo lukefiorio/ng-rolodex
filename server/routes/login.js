@@ -9,23 +9,8 @@ router.route('/').get((req, res) => {
   return res.send('Log-in Form');
 });
 
-// router.post(
-//   '/',
-//   passport.authenticate('local', {
-//     failureRedirect: '/login',
-//   }),
-//   function(req, res) {
-//     return res.redirect(`/users/${req.user.id}`);
-//   },
-// );
-
-// not working... xhr always false
-router.post('/', passport.authenticate('local', { failWithError: true }), function(req, res) {
-  console.log('xhr:', req.xhr);
-  if (req.xhr) {
-    return res.json({ success: true });
-  }
-  return res.json({ success: false });
+router.post('/', passport.authenticate('local'), function(req, res) {
+  return res.json({ id: req.user.id, username: req.user.username });
 });
 
 module.exports = router;
