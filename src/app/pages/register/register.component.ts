@@ -138,6 +138,14 @@ export class RegisterComponent {
       this.invalidData.emailMessage = '';
       this.invalidData.invalidEmail = false;
     }
+
+    if (address.length > 100) {
+      this.invalidData.addressMessage = 'address cannot exceed 100 characters';
+      this.invalidData.invalidAddress = true;
+    } else {
+      this.invalidData.addressMessage = '';
+      this.invalidData.invalidAddress = false;
+    }
   }
 
   register() {

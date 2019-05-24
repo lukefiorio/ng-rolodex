@@ -94,7 +94,21 @@
       </div>
 
       <div>
-        <input type="text" name="address" placeholder="address" [(ngModel)]="newUserData.address" />
+        <div>
+          <label for="address">Address:</label>
+        </div>
+        <input
+          type="text"
+          [ngClass]="{ error: invalidData.invalidAddress && address.dirty }"
+          name="address"
+          placeholder="address"
+          [(ngModel)]="newUserData.address"
+          (keyup)="validateData()"
+          #address="ngModel"
+        />
+        <div class="error-message" *ngIf="invalidData.invalidAddress && address.dirty">
+          {{ invalidData.addressMessage }}
+        </div>
       </div>
 
       <div>
