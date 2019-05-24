@@ -33,6 +33,10 @@ export class BackendService {
     return this.http.post('/api/contacts', newContact).toPromise();
   }
 
+  checkUsernames(username: string): Promise<object> {
+    return this.http.get(`api/users?username=${username}`).toPromise();
+  }
+
   searchContacts(name: string): Promise<object> {
     return this.http.get(`/api/contacts/search/${name}`).toPromise();
   }

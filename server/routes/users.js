@@ -5,10 +5,14 @@ const router = express.Router();
 const User = require('../database/models/User');
 
 router.route('/').get((req, res) => {
-  new User().fetchAll().then((result) => {
-    const allUsers = result.toJSON();
-    return res.send(allUsers);
-  });
+  new User({ username: req.query.username })
+    .fetch()
+    .then((result) => {
+      return res.send(Boolean(result));
+    })
+    .catch((err) => {
+      return res.status(500).send('Server error');
+    });
 });
 
 module.exports = router;

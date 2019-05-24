@@ -14,7 +14,6 @@
         <p *ngIf="contact.twitter !== ''">Twitter: {{ contact.twitter }}</p>
         <p *ngIf="contact.instagram !== ''">Instagram: {{ contact.instagram }}</p>
         <p *ngIf="contact.github !== ''">Github: {{ contact.github }}</p>
-        <button (click)="edit(contact.id)">Edit</button>
         <a routerLink="../contacts/edit">Edit</a>
         <button (click)="delete(contact.id)">Delete</button>
       </div>

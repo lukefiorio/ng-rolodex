@@ -4,23 +4,93 @@
   <div class="register-container">
     <form>
       <div>
-        <input type="text" name="username" placeholder="username" [(ngModel)]="newUserData.username" />
+        <div>
+          <label for="username">Username:</label>
+        </div>
+        <input
+          type="text"
+          [ngClass]="{ error: invalidData.invalidUsername && username.dirty }"
+          name="username"
+          placeholder="username"
+          [(ngModel)]="newUserData.username"
+          (keyup)="validateData()"
+          #username="ngModel"
+        />
+        <div class="error-message" *ngIf="invalidData.invalidUsername && username.dirty">
+          {{ invalidData.usernameMessage }}
+        </div>
       </div>
 
       <div>
-        <input type="password" name="password" placeholder="password" [(ngModel)]="newUserData.password" />
+        <div>
+          <label for="password">Password:</label>
+        </div>
+        <input
+          type="password"
+          [ngClass]="{ error: invalidData.invalidPassword && password.dirty }"
+          name="password"
+          placeholder="password"
+          [(ngModel)]="newUserData.password"
+          (keyup)="validateData()"
+          #password="ngModel"
+        />
+        <div class="error-message" *ngIf="invalidData.invalidPassword && password.dirty">
+          {{ invalidData.passwordMessage }}
+        </div>
       </div>
 
       <div>
-        <input type="password" name="passwordCheck" placeholder="password" [(ngModel)]="newUserData.passwordCheck" />
+        <div>
+          <label for="passwordCheck">Confirm Password:</label>
+        </div>
+        <input
+          type="password"
+          [ngClass]="{ error: invalidData.invalidPasswordCheck && passwordCheck.dirty }"
+          name="passwordCheck"
+          placeholder="confirm password"
+          [(ngModel)]="newUserData.passwordCheck"
+          (keyup)="validateData()"
+          #passwordCheck="ngModel"
+        />
+        <div class="error-message" *ngIf="invalidData.invalidPasswordCheck && passwordCheck.dirty">
+          {{ invalidData.passwordCheckMessage }}
+        </div>
       </div>
 
       <div>
-        <input type="text" name="name" placeholder="full name" [(ngModel)]="newUserData.name" />
+        <div>
+          <label for="name">Name:</label>
+        </div>
+        <input
+          type="text"
+          [ngClass]="{ error: invalidData.invalidName && name.dirty }"
+          name="name"
+          placeholder="full name"
+          [(ngModel)]="newUserData.name"
+          (keyup)="validateData()"
+          #name="ngModel"
+        />
+        <div class="error-message" *ngIf="invalidData.invalidName && name.dirty">
+          {{ invalidData.nameMessage }}
+        </div>
       </div>
 
       <div>
-        <input type="text" name="email" placeholder="email" [(ngModel)]="newUserData.email" />
+        <div>
+          <label for="email">E-mail:</label>
+        </div>
+        <input
+          type="text"
+          [ngClass]="{ error: invalidData.invalidEmail && email.dirty }"
+          name="email"
+          placeholder="email"
+          [(ngModel)]="newUserData.email"
+          (keyup)="validateData()"
+          #email="ngModel"
+        />
+        <div class="error-message" *ngIf="invalidData.invalidEmail && email.dirty">
+          {{ invalidData.emailMessage }}
+        </div>
       </div>
 
       <div>
