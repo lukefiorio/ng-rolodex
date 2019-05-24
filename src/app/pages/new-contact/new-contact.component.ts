@@ -22,19 +22,7 @@ interface ContactsResponse {
   styleUrls: ['./new-contact.component.scss'],
 })
 export class NewContactComponent implements OnInit {
-  newContactData: {
-    id: number;
-    name: string;
-    address: string;
-    mobile: string;
-    work: string;
-    home: string;
-    email: string;
-    twitter: string;
-    instagram: string;
-    github: string;
-    created_by: number;
-  } = {
+  newContactData: ContactsResponse = {
     id: 0,
     name: '',
     address: '',

@@ -9,7 +9,7 @@ router
   .route('/')
   .get((req, res) => {
     // all contacts associated with userId
-    new User({ id: req.query.user })
+    new User({ id: req.user.id })
       .fetch({ withRelated: ['contacts'] })
       .then((result) => {
         const user = result.toJSON();
@@ -31,7 +31,7 @@ router
         twitter: req.body.twitter,
         instagram: req.body.instagram,
         github: req.body.github,
-        created_by: parseInt(req.query.user),
+        created_by: parseInt(req.user.id),
       })
       .then((result) => {
         new Contact({ id: result.id }).fetch().then((result) => {
@@ -99,7 +99,7 @@ router
 
 router.route('/search/:term').get((req, res) => {
   // all contacts associated with userId
-  new User({ id: req.query.user })
+  new User({ id: req.user.id })
     .fetch({ withRelated: ['contacts'] })
     .then((result) => {
       const userContacts = result.toJSON().contacts;

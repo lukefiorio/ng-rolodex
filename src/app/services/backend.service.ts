@@ -8,11 +8,11 @@ export class BackendService {
   constructor(private http: HttpClient) {}
 
   getContacts(): Promise<object> {
-    return this.http.get('/api/contacts?user=1').toPromise();
+    return this.http.get('/api/contacts').toPromise();
   }
 
   getProfile(): Promise<object> {
-    return this.http.get('/api/profile?user=1').toPromise();
+    return this.http.get('/api/profile').toPromise();
   }
 
   addContact(
@@ -30,11 +30,11 @@ export class BackendService {
   ): Promise<object> {
     const newContact = { id, name, address, mobile, work, home, email, twitter, instagram, github, created_by };
     // arg1: route, arg2: body, arg3: header
-    return this.http.post('/api/contacts?user=1', newContact).toPromise();
+    return this.http.post('/api/contacts', newContact).toPromise();
   }
 
   searchContacts(name: string): Promise<object> {
-    return this.http.get(`/api/contacts/search/${name}?user=1`).toPromise();
+    return this.http.get(`/api/contacts/search/${name}`).toPromise();
   }
 
   editContact(id: string): Promise<object> {
@@ -46,8 +46,15 @@ export class BackendService {
     return this.http.delete(`api/contacts/${id}`).toPromise();
   }
 
-  register(data) {
-    return this.http.post('/api/register', data).toPromise();
+  register(registerData: {
+    username: string;
+    name: string;
+    email: string;
+    address: string;
+    password: string;
+    passwordCheck: string;
+  }) {
+    return this.http.post('/api/register', registerData).toPromise();
   }
 
   login(loginData: { username: string; password: string }): Promise<object> {

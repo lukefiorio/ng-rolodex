@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require('../database/models/User');
 const bcrypt = require('bcryptjs');
 const saltRounds = 12;
+const passport = require('passport');
 
 router
   .route('/')
@@ -28,17 +29,18 @@ router
         return new User({
           username: req.body.username,
           password: hash,
-          role: 'user',
+          name: req.body.name,
+          email: req.body.email,
+          address: req.body.address,
         })
           .save()
           .then((user) => {
-            console.log(user);
             req.login(user, (err) => {
               if (err) {
                 console.log('error:', err);
                 return res.status(500).send('Unable to log-in');
               }
-              return res.redirect('/gallery');
+              return res.json({ id: req.user.id, username: req.user.username });
             });
           })
           .catch((err) => {

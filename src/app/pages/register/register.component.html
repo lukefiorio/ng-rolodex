@@ -1,3 +1,35 @@
 <div class="page">
   <p>Register page</p>
+
+  <div class="register-container">
+    <form>
+      <div>
+        <input type="text" name="username" placeholder="username" [(ngModel)]="newUserData.username" />
+      </div>
+
+      <div>
+        <input type="password" name="password" placeholder="password" [(ngModel)]="newUserData.password" />
+      </div>
+
+      <div>
+        <input type="password" name="passwordCheck" placeholder="password" [(ngModel)]="newUserData.passwordCheck" />
+      </div>
+
+      <div>
+        <input type="text" name="name" placeholder="full name" [(ngModel)]="newUserData.name" />
+      </div>
+
+      <div>
+        <input type="text" name="email" placeholder="email" [(ngModel)]="newUserData.email" />
+      </div>
+
+      <div>
+        <input type="text" name="address" placeholder="address" [(ngModel)]="newUserData.address" />
+      </div>
+
+      <div>
+        <button class="btn" (click)="register()">Sign up</button>
+      </div>
+    </form>
+  </div>
 </div>

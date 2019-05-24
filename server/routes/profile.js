@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require('../database/models/User');
 
 router.route('/').get((req, res) => {
-  new User({ id: req.query.user })
+  new User({ id: req.user.id })
     .fetch({ withRelated: ['contacts'] })
     .then((result) => {
       const user = result.toJSON();

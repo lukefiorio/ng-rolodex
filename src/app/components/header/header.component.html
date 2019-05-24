@@ -1,17 +1,32 @@
-<ul>
-  <li>
-    <a routerLink="/">Home</a>
-  </li>
+<div class="header-container">
+  <div class="header-left">
+    <ul>
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
 
-  <li>
-    <a routerLink="contacts">View All Contacts</a>
-  </li>
+      <li>
+        <a routerLink="contacts">View All Contacts</a>
+      </li>
 
-  <li>
-    <a routerLink="contacts/new">Create Contacts</a>
-  </li>
+      <li>
+        <a routerLink="contacts/new">Create Contacts</a>
+      </li>
 
-  <li>
-    <a routerLink="profile">My Profile</a>
-  </li>
-</ul>
+      <li>
+        <a routerLink="profile">My Profile</a>
+      </li>
+    </ul>
+  </div>
+  <div class="header-right">
+    <div class="logged-in" *ngIf="isLoggedIn()">
+      Welcome, {{ user.username }}
+      <button (click)="logout()">Log Out</button>
+    </div>
+
+    <!-- does same thing, in a diff way -->
+    <div class="logged-out" *ngIf="!isLoggedIn()">
+      <button (click)="login()">Log In</button>
+    </div>
+  </div>
+</div>

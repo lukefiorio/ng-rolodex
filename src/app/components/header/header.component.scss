@@ -1,15 +1,45 @@
 ul {
   margin: 0;
-  padding: 15px;
-  background-color: lighten(gray, 25%);
+  padding: 0;
+}
 
-  li {
-    list-style-type: none;
-    display: inline-block;
-    margin-right: 15px;
-    a {
-      text-decoration: none;
-      color: white;
-    }
+li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 15px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.header-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ddd;
+
+  .header-left {
+    margin: 0 15px;
+  }
+
+  .header-right {
+    float: right;
+    margin: 0 15px;
+  }
+}
+
+button {
+  border: 0;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #1e5799;
+  border-radius: 10px;
+  margin-left: 15px;
+  &:hover {
+    background-color: lighten(#1e5799, 10%);
   }
 }
