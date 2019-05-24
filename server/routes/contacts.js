@@ -53,6 +53,9 @@ router
       .fetch()
       .then((result) => {
         const contact = result.toJSON();
+        if (contact.created_by !== req.user.id) {
+          return res.status(404).send('Not authorized');
+        }
         return res.send(contact);
       })
       .catch((err) => {
@@ -72,7 +75,7 @@ router
         twitter: req.body.twitter,
         instagram: req.body.instagram,
         github: req.body.github,
-        created_by: parseInt(req.query.user),
+        created_by: parseInt(req.user.id),
       })
       .then((result) => {
         new Contact({ id: result.id }).fetch().then((result) => {
@@ -86,11 +89,23 @@ router
       });
   })
   .delete((req, res) => {
+    console.log('params:', req.params.id);
     Contact.where({ id: req.params.id })
       .destroy()
       .then((result) => {
         // needs to return all contacts
-        return res.status(200).send('Successful Delete');
+        console.log('req.user', req.user);
+        new User({ id: req.user.id })
+          .fetch({ withRelated: ['contacts'] })
+          .then((result) => {
+            const user = result.toJSON();
+            console.log('user', user);
+            return res.json(user);
+          })
+          .catch((err) => {
+            console.log('error:', err);
+          });
+        // return res.status(200).send('Successful Delete');
       })
       .catch((err) => {
         console.log('error', err);

@@ -1,5 +1,5 @@
 <div class="page">
-  <p>Register page</p>
+  <h1>Register page</h1>
 
   <div class="register-container">
     <form>
@@ -65,7 +65,7 @@
           type="text"
           [ngClass]="{ error: invalidData.invalidName && name.dirty }"
           name="name"
-          placeholder="full name"
+          placeholder="full name (optional)"
           [(ngModel)]="newUserData.name"
           (keyup)="validateData()"
           #name="ngModel"
@@ -83,7 +83,7 @@
           type="text"
           [ngClass]="{ error: invalidData.invalidEmail && email.dirty }"
           name="email"
-          placeholder="email"
+          placeholder="email (optional)"
           [(ngModel)]="newUserData.email"
           (keyup)="validateData()"
           #email="ngModel"
@@ -101,7 +101,7 @@
           type="text"
           [ngClass]="{ error: invalidData.invalidAddress && address.dirty }"
           name="address"
-          placeholder="address"
+          placeholder="address (optional)"
           [(ngModel)]="newUserData.address"
           (keyup)="validateData()"
           #address="ngModel"
@@ -112,7 +112,20 @@
       </div>
 
       <div>
-        <button class="btn" (click)="register()">Sign up</button>
+        <button
+          class="btn"
+          (click)="register()"
+          [disabled]="
+            invalidData.invalidUsername ||
+            invalidData.invalidName ||
+            invalidData.invalidEmail ||
+            invalidData.invalidAddress ||
+            invalidData.invalidPassword ||
+            invalidData.invalidPasswordCheck
+          "
+        >
+          Sign up
+        </button>
       </div>
     </form>
   </div>

@@ -1,22 +1,6 @@
 <div class="page">
+  <h1>{{ profile.username }}'s profile:</h1>
   <div>{{ profile.name }}</div>
   <div>{{ profile.email }}</div>
-  <div>
-    <p>Contacts:</p>
-    <div *ngFor="let contact of profile.contacts">
-      <div class="contactCard">
-        <p>Name: {{ contact.name }}</p>
-        <p *ngIf="contact.address !== ''">Address: {{ contact.address }}</p>
-        <p *ngIf="contact.mobile !== ''">Mobile: {{ contact.mobile }}</p>
-        <p *ngIf="contact.work !== ''">Work: {{ contact.work }}</p>
-        <p *ngIf="contact.home !== ''">Home: {{ contact.home }}</p>
-        <p *ngIf="contact.email !== ''">Email: {{ contact.email }}</p>
-        <p *ngIf="contact.twitter !== ''">Twitter: {{ contact.twitter }}</p>
-        <p *ngIf="contact.instagram !== ''">Instagram: {{ contact.instagram }}</p>
-        <p *ngIf="contact.github !== ''">Github: {{ contact.github }}</p>
-        <a routerLink="../contacts/edit">Edit</a>
-        <button (click)="delete(contact.id)">Delete</button>
-      </div>
-    </div>
-  </div>
+  <div>{{ profile.address }}</div>
 </div>

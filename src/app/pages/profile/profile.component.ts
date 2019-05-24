@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   }
 
   delete(id) {
+    console.log('id', id);
     this.backend.deleteContact(id).then((data: any) => {
       this.profile = data;
     });

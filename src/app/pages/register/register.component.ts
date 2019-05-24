@@ -120,7 +120,11 @@ export class RegisterComponent {
       this.invalidData.invalidPasswordCheck = false;
     }
 
-    if (name.length > 100) {
+    if (name.length === 0) {
+      // name not required
+      this.invalidData.nameMessage = '';
+      this.invalidData.invalidName = false;
+    } else if (name.length > 100) {
       this.invalidData.nameMessage = 'name cannot exceed 100 characters';
       this.invalidData.invalidName = true;
     } else {
@@ -128,7 +132,11 @@ export class RegisterComponent {
       this.invalidData.invalidName = false;
     }
 
-    if (!email.includes('@') || !email.includes('.')) {
+    if (email.length === 0) {
+      // email not required
+      this.invalidData.emailMessage = '';
+      this.invalidData.invalidEmail = false;
+    } else if (!email.includes('@') || !email.includes('.')) {
       this.invalidData.emailMessage = 'email not formatted correctly';
       this.invalidData.invalidEmail = true;
     } else if (email.length > 100) {
@@ -139,7 +147,11 @@ export class RegisterComponent {
       this.invalidData.invalidEmail = false;
     }
 
-    if (address.length > 100) {
+    if (address.length === 0) {
+      // address not required
+      this.invalidData.addressMessage = '';
+      this.invalidData.invalidAddress = false;
+    } else if (address.length > 100) {
       this.invalidData.addressMessage = 'address cannot exceed 100 characters';
       this.invalidData.invalidAddress = true;
     } else {
@@ -149,6 +161,18 @@ export class RegisterComponent {
   }
 
   register() {
+    // if any form fields not valid, then return out
+    if (
+      this.invalidData.invalidUsername ||
+      this.invalidData.invalidName ||
+      this.invalidData.invalidEmail ||
+      this.invalidData.invalidAddress ||
+      this.invalidData.invalidPassword ||
+      this.invalidData.invalidPasswordCheck
+    ) {
+      return;
+    }
+
     this.auth
       .register(this.newUserData)
       .then(() => {

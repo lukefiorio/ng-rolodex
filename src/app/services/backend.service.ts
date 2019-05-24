@@ -47,6 +47,7 @@ export class BackendService {
   }
 
   deleteContact(id: string): Promise<object> {
+    console.log('id', id);
     return this.http.delete(`api/contacts/${id}`).toPromise();
   }
 

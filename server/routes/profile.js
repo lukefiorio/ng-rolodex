@@ -6,7 +6,7 @@ const User = require('../database/models/User');
 
 router.route('/').get((req, res) => {
   new User({ id: req.user.id })
-    .fetch({ withRelated: ['contacts'] })
+    .fetch()
     .then((result) => {
       const user = result.toJSON();
       return res.send(user);

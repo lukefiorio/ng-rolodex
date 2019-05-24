@@ -1,7 +1,7 @@
 <div class="page">
   <div>
     <p>Contacts:</p>
-    <div *ngFor="let contact of contacts">
+    <div *ngFor="let contact of user.contacts">
       <div class="contactCard">
         <p>Name: {{ contact.name }}</p>
         <p *ngIf="contact.address !== ''">Address: {{ contact.address }}</p>
@@ -12,13 +12,9 @@
         <p *ngIf="contact.twitter !== ''">Twitter: {{ contact.twitter }}</p>
         <p *ngIf="contact.instagram !== ''">Instagram: {{ contact.instagram }}</p>
         <p *ngIf="contact.github !== ''">Github: {{ contact.github }}</p>
-        <!-- <button (click)="edit(contact.id)">Edit</button> -->
         <a routerLink="edit">Edit</a>
         <button (click)="delete(contact.id)">Delete</button>
       </div>
     </div>
   </div>
-  <a routerLink="edit">Edit</a>
-
-  <a routerLink="edit">Edit</a>
 </div>

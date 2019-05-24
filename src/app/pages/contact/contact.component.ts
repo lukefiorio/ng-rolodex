@@ -9,12 +9,19 @@ import { BackendService } from '../../services/backend.service';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  contacts: any = [];
+  user: any = [];
   constructor(private backend: BackendService) {}
 
   ngOnInit() {
     this.backend.getContacts().then((data: any) => {
-      this.contacts = data.contacts;
+      this.user = data;
+    });
+  }
+
+  delete(id) {
+    console.log('id', id);
+    this.backend.deleteContact(id).then((data: any) => {
+      this.user = data;
     });
   }
 }
