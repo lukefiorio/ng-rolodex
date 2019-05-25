@@ -1,0 +1,38 @@
+#viewModal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#viewBox {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+
+  .close-view-box {
+    float: right;
+    border: 0;
+    margin: -10px;
+    font-size: 16px;
+    height: 30px;
+    width: 30px;
+    color: white;
+    background-color: #1e5799;
+    border-radius: 10px;
+    &:hover {
+      background-color: lighten(#1e5799, 10%);
+      cursor: pointer;
+    }
+  }
+
+  .detail-header {
+    margin-top: -15px;
+  }
+}

@@ -41,6 +41,10 @@ export class BackendService {
     return this.http.get(`/api/contacts/search/${name}`).toPromise();
   }
 
+  getContact(id: string): Promise<object> {
+    return this.http.get(`api/contacts/${id}`).toPromise();
+  }
+
   editContact(id: string): Promise<object> {
     // need to plug actual body in arg2
     return this.http.put(`api/contacts/${id}`, 1).toPromise();

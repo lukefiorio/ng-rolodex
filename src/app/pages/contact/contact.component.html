@@ -2,19 +2,45 @@
   <div>
     <p>Contacts:</p>
     <div *ngFor="let contact of user.contacts">
-      <div class="contactCard">
-        <p>Name: {{ contact.name }}</p>
-        <p *ngIf="contact.address !== ''">Address: {{ contact.address }}</p>
-        <p *ngIf="contact.mobile !== ''">Mobile: {{ contact.mobile }}</p>
-        <p *ngIf="contact.work !== ''">Work: {{ contact.work }}</p>
-        <p *ngIf="contact.home !== ''">Home: {{ contact.home }}</p>
-        <p *ngIf="contact.email !== ''">Email: {{ contact.email }}</p>
-        <p *ngIf="contact.twitter !== ''">Twitter: {{ contact.twitter }}</p>
-        <p *ngIf="contact.instagram !== ''">Instagram: {{ contact.instagram }}</p>
-        <p *ngIf="contact.github !== ''">Github: {{ contact.github }}</p>
-        <a routerLink="edit">Edit</a>
+      <div (click)="showDetail(contact.id)" class="contactCard">
+        <p>{{ contact.name }}</p>
+        <button (click)="showDetail(contact.id)">View</button>
+        <button (click)="editDetail(contact.id)">Edit</button>
         <button (click)="delete(contact.id)">Delete</button>
       </div>
+    </div>
+  </div>
+  <div id="viewModal" *ngIf="showViewModal">
+    <div id="viewBox">
+      <button class="close-view-box" (click)="hideDetail()">x</button>
+      <div class="detail-header">
+        <h2>{{ contactDetail.name }}</h2>
+      </div>
+      <p *ngIf="contactDetail.address !== ''">Address: {{ contactDetail.address }}</p>
+      <p *ngIf="contactDetail.mobile !== ''">Mobile: {{ contactDetail.mobile }}</p>
+      <p *ngIf="contactDetail.work !== ''">Work: {{ contactDetail.work }}</p>
+      <p *ngIf="contactDetail.home !== ''">Home: {{ contactDetail.home }}</p>
+      <p *ngIf="contactDetail.email !== ''">Email: {{ contactDetail.email }}</p>
+      <p *ngIf="contactDetail.twitter !== ''">Twitter: {{ contactDetail.twitter }}</p>
+      <p *ngIf="contactDetail.instagram !== ''">Instagram: {{ contactDetail.instagram }}</p>
+      <p *ngIf="contactDetail.github !== ''">Github: {{ contactDetail.github }}</p>
+    </div>
+  </div>
+
+  <div id="editModal" *ngIf="showEditModal">
+    <div id="editBox">
+      <button class="close-edit-box" (click)="hideEdit()">x</button>
+      <div class="edit-header">
+        <h2>{{ contactDetail.name }}</h2>
+      </div>
+      <p *ngIf="contactDetail.address !== ''">Address: {{ contactDetail.address }}</p>
+      <p *ngIf="contactDetail.mobile !== ''">Mobile: {{ contactDetail.mobile }}</p>
+      <p *ngIf="contactDetail.work !== ''">Work: {{ contactDetail.work }}</p>
+      <p *ngIf="contactDetail.home !== ''">Home: {{ contactDetail.home }}</p>
+      <p *ngIf="contactDetail.email !== ''">Email: {{ contactDetail.email }}</p>
+      <p *ngIf="contactDetail.twitter !== ''">Twitter: {{ contactDetail.twitter }}</p>
+      <p *ngIf="contactDetail.instagram !== ''">Instagram: {{ contactDetail.instagram }}</p>
+      <p *ngIf="contactDetail.github !== ''">Github: {{ contactDetail.github }}</p>
     </div>
   </div>
 </div>

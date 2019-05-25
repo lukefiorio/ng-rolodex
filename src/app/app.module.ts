@@ -14,9 +14,10 @@ import { EditContactComponent } from './pages/edit-contact/edit-contact.componen
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { DetailContactComponent } from './pages/detail-contact/detail-contact.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, ContactComponent, NewContactComponent, ProfileComponent, EditContactComponent, EditProfileComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, ContactComponent, NewContactComponent, ProfileComponent, EditContactComponent, EditProfileComponent, LoginComponent, RegisterComponent, DetailContactComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

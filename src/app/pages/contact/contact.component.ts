@@ -10,6 +10,8 @@ import { BackendService } from '../../services/backend.service';
 })
 export class ContactComponent implements OnInit {
   user: any = [];
+  contactDetail: any = {};
+  showViewModal: boolean = false;
   constructor(private backend: BackendService) {}
 
   ngOnInit() {
@@ -18,8 +20,19 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  showDetail(id) {
+    this.backend.getContact(id).then((data: any) => {
+      // maybe call this something else
+      this.contactDetail = data;
+      this.showViewModal = true;
+    });
+  }
+
+  hideDetail() {
+    this.showViewModal = false;
+  }
+
   delete(id) {
-    console.log('id', id);
     this.backend.deleteContact(id).then((data: any) => {
       this.user = data;
     });
