@@ -17,9 +17,23 @@ export class HomeComponent implements OnInit {
     name: string;
   }[] = [];
 
+  showViewModal: boolean = false;
+  contactDetail: any = {};
+
   constructor(private backend: BackendService) {}
 
   ngOnInit() {}
+
+  showDetail(id) {
+    this.backend.getContact(id).then((data: any) => {
+      this.contactDetail = data;
+      this.showViewModal = true;
+    });
+  }
+
+  hideDetail() {
+    this.showViewModal = false;
+  }
 
   submit() {
     const { name } = this.searchName;

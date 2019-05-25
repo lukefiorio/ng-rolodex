@@ -36,11 +36,35 @@ export class NewContactComponent implements OnInit {
     created_by: 0,
   };
 
+  showViewModal: boolean = false;
+
   constructor(private backend: BackendService, private router: Router) {}
 
   ngOnInit() {}
 
   // handle modal after submission
+
+  hideView() {
+    this.showViewModal = false;
+    this.newContactData = {
+      id: 0,
+      name: '',
+      address: '',
+      mobile: '',
+      work: '',
+      home: '',
+      email: '',
+      twitter: '',
+      instagram: '',
+      github: '',
+      created_by: 0,
+    };
+  }
+
+  showContacts() {
+    this.showViewModal = false;
+    this.router.navigate(['/contacts']);
+  }
 
   submit() {
     const {
@@ -61,7 +85,8 @@ export class NewContactComponent implements OnInit {
       .addContact(id, name, address, mobile, work, home, email, twitter, instagram, github, created_by)
       .then((data: ContactsResponse) => {
         this.newContactData = data;
-        this.router.navigate(['/contacts']);
+        this.showViewModal = true;
+        // this.router.navigate(['/contacts']);
       });
   }
 }

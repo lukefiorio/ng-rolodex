@@ -82,8 +82,8 @@
       <p *ngIf="newContactData.twitter !== ''">Twitter: {{ newContactData.twitter }}</p>
       <p *ngIf="newContactData.instagram !== ''">Instagram: {{ newContactData.instagram }}</p>
       <p *ngIf="newContactData.github !== ''">Github: {{ newContactData.github }}</p>
-      <button (click)="showEdit(contactDetail.id)">View Contacts</button>
-      <button (click)="delete(contactDetail.id)">Add more Contacts</button>
+      <button (click)="showContacts()">View Contacts</button>
+      <button (click)="hideView()">Add more Contacts</button>
     </div>
   </div>
 </div>
