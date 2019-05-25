@@ -1,12 +1,11 @@
 <div class="page">
   <div>
     <p>Contacts:</p>
-    <div *ngFor="let contact of user.contacts">
-      <div (click)="showDetail(contact.id)" class="contactCard">
-        <p>{{ contact.name }}</p>
-        <button (click)="showDetail(contact.id)">View</button>
-        <button (click)="editDetail(contact.id)">Edit</button>
-        <button (click)="delete(contact.id)">Delete</button>
+    <div class="contact-card-box">
+      <div *ngFor="let contact of user.contacts">
+        <div (click)="showDetail(contact.id)" class="contact-card">
+          <p class="contact-name">{{ contact.name }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -24,6 +23,8 @@
       <p *ngIf="contactDetail.twitter !== ''">Twitter: {{ contactDetail.twitter }}</p>
       <p *ngIf="contactDetail.instagram !== ''">Instagram: {{ contactDetail.instagram }}</p>
       <p *ngIf="contactDetail.github !== ''">Github: {{ contactDetail.github }}</p>
+      <button (click)="showEdit(contactDetail.id)">Edit</button>
+      <button (click)="delete(contactDetail.id)">Delete</button>
     </div>
   </div>
 
@@ -41,6 +42,77 @@
       <p *ngIf="contactDetail.twitter !== ''">Twitter: {{ contactDetail.twitter }}</p>
       <p *ngIf="contactDetail.instagram !== ''">Instagram: {{ contactDetail.instagram }}</p>
       <p *ngIf="contactDetail.github !== ''">Github: {{ contactDetail.github }}</p>
+
+      <!-- start form -->
+      <!-- <form>
+          <div>
+            <label for="name">Name:</label>
+          </div>
+          <div>
+            <input type="text" name="name" [(ngModel)]="newContactData.name" />
+          </div>
+    
+          <div>
+            <label for="address">Address:</label>
+          </div>
+          <div>
+            <input type="text" name="address" [(ngModel)]="newContactData.address" />
+          </div>
+    
+          <div>
+            <label for="mobile">Mobile:</label>
+          </div>
+          <div>
+            <input type="text" name="mobile" [(ngModel)]="newContactData.mobile" />
+          </div>
+    
+          <div>
+            <label for="work">Work:</label>
+          </div>
+          <div>
+            <input type="text" name="work" [(ngModel)]="newContactData.work" />
+          </div>
+    
+          <div>
+            <label for="home">Home:</label>
+          </div>
+          <div>
+            <input type="text" name="home" [(ngModel)]="newContactData.home" />
+          </div>
+    
+          <div>
+            <label for="email">Email:</label>
+          </div>
+          <div>
+            <input type="text" name="email" [(ngModel)]="newContactData.email" />
+          </div>
+    
+          <div>
+            <label for="twitter">Twitter:</label>
+          </div>
+          <div>
+            <input type="text" name="twitter" [(ngModel)]="newContactData.twitter" />
+          </div>
+    
+          <div>
+            <label for="instagram">Instagram:</label>
+          </div>
+          <div>
+            <input type="text" name="instagram" [(ngModel)]="newContactData.instagram" />
+          </div>
+    
+          <div>
+            <label for="github">Github:</label>
+          </div>
+          <div>
+            <input type="text" name="github" [(ngModel)]="newContactData.github" />
+          </div>
+    
+          <button (click)="submit()">Submit</button>
+        </form> -->
+      <!-- end form -->
+
+      <button (click)="editDetail(contactDetail.id)">Update</button>
     </div>
   </div>
 </div>

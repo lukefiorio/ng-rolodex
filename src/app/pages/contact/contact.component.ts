@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 
-// interface ContactsResponse {}
+interface ContactData {
+  id: number;
+  name: string;
+  address: string;
+  mobile: string;
+  work: string;
+  home: string;
+  email: string;
+  twitter: string;
+  instagram: string;
+  github: string;
+  created_by: number;
+}
 
 @Component({
   selector: 'app-contact',
@@ -12,6 +24,7 @@ export class ContactComponent implements OnInit {
   user: any = [];
   contactDetail: any = {};
   showViewModal: boolean = false;
+  showEditModal: boolean = false;
   constructor(private backend: BackendService) {}
 
   ngOnInit() {
@@ -28,13 +41,27 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  showEdit(id) {
+    this.showViewModal = false;
+    this.showEditModal = true;
+  }
+
+  editDetail(id) {
+    this.showEditModal = false;
+  }
+
   hideDetail() {
     this.showViewModal = false;
+  }
+
+  hideEdit() {
+    this.showEditModal = false;
   }
 
   delete(id) {
     this.backend.deleteContact(id).then((data: any) => {
       this.user = data;
+      this.showViewModal = false;
     });
   }
 }
