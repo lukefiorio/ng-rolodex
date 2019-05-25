@@ -45,13 +45,11 @@ export class BackendService {
     return this.http.get(`api/contacts/${id}`).toPromise();
   }
 
-  editContact(id: string): Promise<object> {
-    // need to plug actual body in arg2
-    return this.http.put(`api/contacts/${id}`, 1).toPromise();
+  editContact(id: string, updatedContact: object): Promise<object> {
+    return this.http.put(`api/contacts/${id}`, updatedContact).toPromise();
   }
 
   deleteContact(id: string): Promise<object> {
-    console.log('id', id);
     return this.http.delete(`api/contacts/${id}`).toPromise();
   }
 

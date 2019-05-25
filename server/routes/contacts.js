@@ -10,7 +10,15 @@ router
   .get((req, res) => {
     // all contacts associated with userId
     new User({ id: req.user.id })
-      .fetch({ withRelated: ['contacts'] })
+      .fetch({
+        withRelated: [
+          {
+            contacts: (qb) => {
+              qb.orderBy('name', 'ASC');
+            },
+          },
+        ],
+      })
       .then((result) => {
         const user = result.toJSON();
         return res.send(user);
@@ -34,11 +42,17 @@ router
         created_by: parseInt(req.user.id),
       })
       .then((result) => {
-        new Contact({ id: result.id }).fetch().then((result) => {
-          const contact = result.toJSON();
-          // respond with newly created contact
-          return res.json(contact);
-        });
+        new Contact({ id: result.id })
+          .query((qb) => {
+            // sort names alphabetically
+            qb.orderBy('name', 'ASC');
+          })
+          .fetch()
+          .then((result) => {
+            const contact = result.toJSON();
+            // respond with newly created contact
+            return res.json(contact);
+          });
       })
       .catch((err) => {
         console.log('error:', err);
@@ -48,7 +62,6 @@ router
 router
   .route('/:id')
   .get((req, res) => {
-    // need to prevent access if contact not created by user
     new Contact({ id: req.params.id })
       .fetch()
       .then((result) => {
@@ -64,7 +77,7 @@ router
       });
   })
   .put((req, res) => {
-    new Contact()
+    new Contact('id', req.params.id)
       .save({
         name: req.body.name,
         address: req.body.address,
@@ -75,28 +88,44 @@ router
         twitter: req.body.twitter,
         instagram: req.body.instagram,
         github: req.body.github,
-        created_by: parseInt(req.user.id),
       })
       .then((result) => {
-        new Contact({ id: result.id }).fetch().then((result) => {
-          const contact = result.toJSON();
-          // respond with newly created contact
-          return res.json(contact);
-        });
+        new User({ id: req.user.id })
+          .fetch({
+            withRelated: [
+              {
+                contacts: (qb) => {
+                  qb.orderBy('name', 'ASC');
+                },
+              },
+            ],
+          })
+          .then((result) => {
+            const user = result.toJSON();
+            return res.send(user);
+          })
+          .catch((err) => {
+            console.log('error:', err);
+          });
       })
       .catch((err) => {
         console.log('error:', err);
       });
   })
   .delete((req, res) => {
-    console.log('params:', req.params.id);
     Contact.where({ id: req.params.id })
       .destroy()
       .then((result) => {
-        // needs to return all contacts
-        console.log('req.user', req.user);
         new User({ id: req.user.id })
-          .fetch({ withRelated: ['contacts'] })
+          .fetch({
+            withRelated: [
+              {
+                contacts: (qb) => {
+                  qb.orderBy('name', 'ASC');
+                },
+              },
+            ],
+          })
           .then((result) => {
             const user = result.toJSON();
             console.log('user', user);
@@ -105,7 +134,6 @@ router
           .catch((err) => {
             console.log('error:', err);
           });
-        // return res.status(200).send('Successful Delete');
       })
       .catch((err) => {
         console.log('error', err);
@@ -115,7 +143,15 @@ router
 router.route('/search/:term').get((req, res) => {
   // all contacts associated with userId
   new User({ id: req.user.id })
-    .fetch({ withRelated: ['contacts'] })
+    .fetch({
+      withRelated: [
+        {
+          contacts: (qb) => {
+            qb.orderBy('name', 'ASC');
+          },
+        },
+      ],
+    })
     .then((result) => {
       const userContacts = result.toJSON().contacts;
       // filter contacts whose name starts with search string

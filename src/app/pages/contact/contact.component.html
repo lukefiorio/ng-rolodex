@@ -34,85 +34,75 @@
       <div class="edit-header">
         <h2>{{ contactDetail.name }}</h2>
       </div>
-      <p *ngIf="contactDetail.address !== ''">Address: {{ contactDetail.address }}</p>
-      <p *ngIf="contactDetail.mobile !== ''">Mobile: {{ contactDetail.mobile }}</p>
-      <p *ngIf="contactDetail.work !== ''">Work: {{ contactDetail.work }}</p>
-      <p *ngIf="contactDetail.home !== ''">Home: {{ contactDetail.home }}</p>
-      <p *ngIf="contactDetail.email !== ''">Email: {{ contactDetail.email }}</p>
-      <p *ngIf="contactDetail.twitter !== ''">Twitter: {{ contactDetail.twitter }}</p>
-      <p *ngIf="contactDetail.instagram !== ''">Instagram: {{ contactDetail.instagram }}</p>
-      <p *ngIf="contactDetail.github !== ''">Github: {{ contactDetail.github }}</p>
 
-      <!-- start form -->
-      <!-- <form>
-          <div>
-            <label for="name">Name:</label>
-          </div>
-          <div>
-            <input type="text" name="name" [(ngModel)]="newContactData.name" />
-          </div>
-    
-          <div>
-            <label for="address">Address:</label>
-          </div>
-          <div>
-            <input type="text" name="address" [(ngModel)]="newContactData.address" />
-          </div>
-    
-          <div>
-            <label for="mobile">Mobile:</label>
-          </div>
-          <div>
-            <input type="text" name="mobile" [(ngModel)]="newContactData.mobile" />
-          </div>
-    
-          <div>
-            <label for="work">Work:</label>
-          </div>
-          <div>
-            <input type="text" name="work" [(ngModel)]="newContactData.work" />
-          </div>
-    
-          <div>
-            <label for="home">Home:</label>
-          </div>
-          <div>
-            <input type="text" name="home" [(ngModel)]="newContactData.home" />
-          </div>
-    
-          <div>
-            <label for="email">Email:</label>
-          </div>
-          <div>
-            <input type="text" name="email" [(ngModel)]="newContactData.email" />
-          </div>
-    
-          <div>
-            <label for="twitter">Twitter:</label>
-          </div>
-          <div>
-            <input type="text" name="twitter" [(ngModel)]="newContactData.twitter" />
-          </div>
-    
-          <div>
-            <label for="instagram">Instagram:</label>
-          </div>
-          <div>
-            <input type="text" name="instagram" [(ngModel)]="newContactData.instagram" />
-          </div>
-    
-          <div>
-            <label for="github">Github:</label>
-          </div>
-          <div>
-            <input type="text" name="github" [(ngModel)]="newContactData.github" />
-          </div>
-    
-          <button (click)="submit()">Submit</button>
-        </form> -->
+      <form>
+        <div>
+          <label for="name">Name:</label>
+        </div>
+        <div>
+          <input type="text" name="name" [(ngModel)]="updateContactData.name" />
+        </div>
+
+        <div>
+          <label for="address">Address:</label>
+        </div>
+        <div>
+          <input type="text" name="address" [(ngModel)]="updateContactData.address" />
+        </div>
+
+        <div>
+          <label for="mobile">Mobile:</label>
+        </div>
+        <div>
+          <input type="text" name="mobile" [(ngModel)]="updateContactData.mobile" />
+        </div>
+
+        <div>
+          <label for="work">Work:</label>
+        </div>
+        <div>
+          <input type="text" name="work" [(ngModel)]="updateContactData.work" />
+        </div>
+
+        <div>
+          <label for="home">Home:</label>
+        </div>
+        <div>
+          <input type="text" name="home" [(ngModel)]="updateContactData.home" />
+        </div>
+
+        <div>
+          <label for="email">Email:</label>
+        </div>
+        <div>
+          <input type="text" name="email" [(ngModel)]="updateContactData.email" />
+        </div>
+
+        <div>
+          <label for="twitter">Twitter:</label>
+        </div>
+        <div>
+          <input type="text" name="twitter" [(ngModel)]="updateContactData.twitter" />
+        </div>
+
+        <div>
+          <label for="instagram">Instagram:</label>
+        </div>
+        <div>
+          <input type="text" name="instagram" [(ngModel)]="updateContactData.instagram" />
+        </div>
+
+        <div>
+          <label for="github">Github:</label>
+        </div>
+        <div>
+          <input type="text" name="github" [(ngModel)]="updateContactData.github" />
+        </div>
+
+        <button (click)="hideEdit()">Cancel</button>
+        <button (click)="editDetail(contactDetail.id)">Update</button>
+      </form>
       <!-- end form -->
-
-      <button (click)="editDetail(contactDetail.id)">Update</button>
     </div>
   </div>
 </div>

@@ -40,6 +40,8 @@ export class NewContactComponent implements OnInit {
 
   ngOnInit() {}
 
+  // handle modal after submission
+
   submit() {
     const {
       id,
@@ -59,7 +61,7 @@ export class NewContactComponent implements OnInit {
       .addContact(id, name, address, mobile, work, home, email, twitter, instagram, github, created_by)
       .then((data: ContactsResponse) => {
         this.newContactData = data;
-        this.router.navigate(['/']);
+        this.router.navigate(['/contacts']);
       });
   }
 }

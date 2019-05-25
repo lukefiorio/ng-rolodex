@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 
 interface ContactData {
-  id: number;
   name: string;
   address: string;
   mobile: string;
@@ -12,7 +11,6 @@ interface ContactData {
   twitter: string;
   instagram: string;
   github: string;
-  created_by: number;
 }
 
 @Component({
@@ -25,6 +23,19 @@ export class ContactComponent implements OnInit {
   contactDetail: any = {};
   showViewModal: boolean = false;
   showEditModal: boolean = false;
+
+  updateContactData: ContactData = {
+    name: '',
+    address: '',
+    mobile: '',
+    work: '',
+    home: '',
+    email: '',
+    twitter: '',
+    instagram: '',
+    github: '',
+  };
+
   constructor(private backend: BackendService) {}
 
   ngOnInit() {
@@ -44,9 +55,27 @@ export class ContactComponent implements OnInit {
   showEdit(id) {
     this.showViewModal = false;
     this.showEditModal = true;
+    this.backend.getContact(id).then((data: any) => {
+      this.updateContactData.name = data.name;
+      this.updateContactData.address = data.address;
+      this.updateContactData.mobile = data.mobile;
+      this.updateContactData.work = data.work;
+      this.updateContactData.home = data.home;
+      this.updateContactData.email = data.email;
+      this.updateContactData.twitter = data.twitter;
+      this.updateContactData.instagram = data.instagram;
+      this.updateContactData.github = data.github;
+    });
   }
 
   editDetail(id) {
+    const updatedContact = this.updateContactData;
+    this.backend.editContact(id, updatedContact).then((data: ContactData) => {
+      this.user = data;
+      this.showDetail(id);
+      // this.router.navigate(['/']);
+    });
+
     this.showEditModal = false;
   }
 

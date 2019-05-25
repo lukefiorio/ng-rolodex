@@ -16,17 +16,4 @@ export class ProfileComponent implements OnInit {
       this.profile = data;
     });
   }
-
-  edit(id) {
-    this.backend.editContact(id).then((data: any) => {
-      this.profile = data;
-    });
-  }
-
-  delete(id) {
-    console.log('id', id);
-    this.backend.deleteContact(id).then((data: any) => {
-      this.profile = data;
-    });
-  }
 }
