@@ -1,12 +1,12 @@
 <div class="page">
-  <form>
-    <div>
-      <label for="name">Name:</label>
-    </div>
-    <div>
-      <input type="text" name="name" [(ngModel)]="searchName.name" (keyup)="submit()" />
-    </div>
-  </form>
+  <div class="searchBox">
+    <form>
+      <label for="name">Search contacts:</label>
+      <div>
+        <input type="text" name="name" [(ngModel)]="searchName.name" (keyup)="submit()" />
+      </div>
+    </form>
+  </div>
 
   <div class="contact-card-box">
     <div *ngFor="let contact of foundNames">

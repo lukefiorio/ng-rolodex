@@ -1,3 +1,25 @@
+.searchBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  margin: 4em 0em 1em 0em;
+
+  form {
+    width: 50%;
+  }
+  input {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+}
+
 .contact-card-box {
   display: flex;
   flex-direction: row;
