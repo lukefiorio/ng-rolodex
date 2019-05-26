@@ -37,6 +37,7 @@ export class NewContactComponent implements OnInit {
   };
 
   showViewModal: boolean = false;
+  toggleClass: boolean = false;
 
   constructor(private backend: BackendService, private router: Router) {}
 
@@ -86,7 +87,8 @@ export class NewContactComponent implements OnInit {
       .then((data: ContactsResponse) => {
         this.newContactData = data;
         this.showViewModal = true;
-        // this.router.navigate(['/contacts']);
+
+        setTimeout(() => (this.toggleClass = true), 400);
       });
   }
 }

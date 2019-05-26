@@ -71,8 +71,15 @@
   <div id="viewModal" *ngIf="showViewModal">
     <div id="viewBox">
       <div class="detail-header">
-        <h1>Successfully added contact!</h1>
-        <h2>{{ newContactData.name }}</h2>
+        <div class="detail-header-left">
+          <h1>Successfully added contact!</h1>
+          <h2>{{ newContactData.name }}</h2>
+        </div>
+        <div class="detail-header-right">
+          <div [ngClass]="{ 'circle-loader': true, 'load-complete': toggleClass }">
+            <div [ngClass]="{ checkmark: toggleClass, draw: toggleClass }"></div>
+          </div>
+        </div>
       </div>
       <p *ngIf="newContactData.address !== ''">Address: {{ newContactData.address }}</p>
       <p *ngIf="newContactData.mobile !== ''">Mobile: {{ newContactData.mobile }}</p>
@@ -82,6 +89,7 @@
       <p *ngIf="newContactData.twitter !== ''">Twitter: {{ newContactData.twitter }}</p>
       <p *ngIf="newContactData.instagram !== ''">Instagram: {{ newContactData.instagram }}</p>
       <p *ngIf="newContactData.github !== ''">Github: {{ newContactData.github }}</p>
+
       <button (click)="showContacts()">View Contacts</button>
       <button (click)="hideView()">Add more Contacts</button>
     </div>
