@@ -1,6 +1,10 @@
+<div class="header-top">
+  <h3>R O L O D E X</h3>
+</div>
+
 <div class="header-container">
   <div class="header-left">
-    <ul>
+    <ul *ngIf="isLoggedIn()">
       <li>
         <a routerLink="/">Home</a>
       </li>
@@ -24,7 +28,6 @@
       <button (click)="logout()">Log Out</button>
     </div>
 
-    <!-- does same thing, in a diff way -->
     <div class="logged-out" *ngIf="!isLoggedIn()">
       <button (click)="login()">Log In</button>
     </div>
