@@ -15,6 +15,10 @@ export class BackendService {
     return this.http.get('/api/profile').toPromise();
   }
 
+  editProfile(updatedProfile: object): Promise<object> {
+    return this.http.put('api/profile', updatedProfile).toPromise();
+  }
+
   addContact(
     id: number,
     name: string,

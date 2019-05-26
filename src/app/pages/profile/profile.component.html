@@ -3,4 +3,41 @@
   <div>{{ profile.name }}</div>
   <div>{{ profile.email }}</div>
   <div>{{ profile.address }}</div>
+
+  <button (click)="showEdit()">Edit Profile</button>
+
+  <div id="editModal" *ngIf="showEditModal">
+    <div id="editBox">
+      <button class="close-edit-box" (click)="hideEdit()">x</button>
+      <div class="edit-header">
+        <h2>{{ profile.username }}</h2>
+      </div>
+
+      <form>
+        <div>
+          <label for="name">Name:</label>
+        </div>
+        <div>
+          <input type="text" name="name" [(ngModel)]="updateProfile.name" />
+        </div>
+
+        <div>
+          <label for="email">Email:</label>
+        </div>
+        <div>
+          <input type="text" name="email" [(ngModel)]="updateProfile.email" />
+        </div>
+
+        <div>
+          <label for="address">Address:</label>
+        </div>
+        <div>
+          <input type="text" name="address" [(ngModel)]="updateProfile.address" />
+        </div>
+
+        <button (click)="hideEdit()">Cancel</button>
+        <button (click)="editProfile()">Update</button>
+      </form>
+    </div>
+  </div>
 </div>

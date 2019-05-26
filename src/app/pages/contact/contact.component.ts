@@ -73,7 +73,6 @@ export class ContactComponent implements OnInit {
     this.backend.editContact(id, updatedContact).then((data: ContactData) => {
       this.user = data;
       this.showDetail(id);
-      // this.router.navigate(['/']);
     });
 
     this.showEditModal = false;
